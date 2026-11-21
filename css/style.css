@@ -1,0 +1,575 @@
+/*
+    ARCHIVO: css/style.css
+    PROYECTO: TutoresOn-Line
+
+    Contenido:
+    1. Colores y ajustes generales
+    2. Encabezado
+    3. Sección principal
+    4. Buscador
+    5. Tutores destacados
+    6. Cómo funciona
+    7. Pie de página
+    8. Formulario de registro
+    9. Adaptación a celulares
+*/
+
+
+/* ==========================================
+   1. COLORES Y AJUSTES GENERALES
+   ========================================== */
+
+/* Variables de color: si quieres cambiar los colores, hazlo aquí */
+:root {
+    --color-principal: #3c8ca2;   /* Azul moderno */
+    --color-principal-oscuro: #1d3fb5;
+    --color-acento:    #ffbf2f;   /* Amarillo cálido */
+    --color-fondo:     #f4f7fb;   /* Fondo claro */
+    --color-blanco:    #ffffff;
+    --color-texto:     #1b2430;
+    --color-texto-suave: #5d677f;
+    --color-borde:     #dfe7f4;
+    --sombra-suave: 0 12px 32px rgba(31, 54, 88, 0.12);
+    --radio: 18px;
+}
+
+/* Quita márgenes por defecto y hace que el padding no agrande las cajas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(180deg, #f4f7fb 0%, #eef4ff 100%);
+    color: var(--color-texto);
+    line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    color: var(--color-principal);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Caja centrada que limita el ancho del contenido */
+.contenedor {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Espacio arriba y abajo de las secciones */
+.tutores,
+.como-funciona {
+    padding: 64px 0;
+}
+
+.tutores h2,
+.como-funciona h2 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.seccion-subtitulo {
+    color: var(--color-texto-suave);
+    margin-bottom: 32px;
+}
+
+/* Cuando se hace clic en un enlace del menú, la página baja suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Borde visible al navegar con el teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 2px;
+}
+
+
+/* ==========================================
+   2. ENCABEZADO
+   ========================================== */
+
+.encabezado {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(223, 231, 244, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.encabezado-contenido {
+    display: flex;                  /* Pone logotipo y menú en una fila */
+    justify-content: space-between; /* Uno a cada lado */
+    align-items: center;
+    padding: 18px 0;
+}
+
+.logotipo {
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-principal);
+    letter-spacing: -0.04em;
+}
+
+.menu {
+    display: flex;
+    gap: 24px;
+}
+
+.menu a {
+    color: var(--color-texto);
+    font-weight: 600;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.menu a:hover {
+    border-bottom-color: var(--color-acento);
+    color: var(--color-principal);
+}
+
+/* Botones de inicio de sesión y registro */
+.acceso {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.boton-sesion {
+    color: var(--color-principal);
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 999px;
+}
+
+.boton-sesion:hover {
+    text-decoration: none;
+    background: rgba(47, 94, 247, 0.08);
+}
+
+.boton-registro {
+    background: linear-gradient(135deg, var(--color-principal) 0%, var(--color-principal-oscuro) 100%);
+    color: var(--color-blanco);
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 999px;
+    box-shadow: 0 8px 18px rgba(47, 94, 247, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-registro:hover {
+    background: linear-gradient(135deg, #4b71ff 0%, #2545c5 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px rgba(47, 94, 247, 0.28);
+}
+
+
+/* ==========================================
+   3. SECCIÓN PRINCIPAL
+   ========================================== */
+
+.principal {
+    background: linear-gradient(135deg, var(--color-principal) 0%, #3b66f6 45%, #1d3fb5 100%);
+    color: var(--color-blanco);
+    padding: 104px 0 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.principal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.18), transparent 35%);
+}
+
+.principal .contenedor {
+    position: relative;
+    z-index: 1;
+}
+
+.principal-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.principal-texto-contenedor {
+    flex: 1.2;
+}
+
+.principal h1 {
+    color: var(--color-blanco);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    max-width: 760px;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.principal-texto {
+    font-size: 1.15rem;
+    max-width: 620px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.principal-imagen-contenedor {
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.principal-imagen {
+    width: min(100%, 430px);
+    max-width: 100%;
+    height: auto;
+    border-radius: 22px;
+    box-shadow: 0 24px 45px rgba(8, 18, 58, 0.28);
+    border: 4px solid rgba(255, 255, 255, 0.22);
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+
+/* ==========================================
+   4. BUSCADOR
+   ========================================== */
+
+.buscador {
+    margin-top: -48px;  /* Sube la caja para que se monte sobre la sección azul */
+    position: relative;
+}
+
+.buscador-formulario {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(223, 231, 244, 0.9);
+    border-radius: var(--radio);
+    padding: 24px;
+    box-shadow: var(--sombra-suave);
+}
+
+.buscador-formulario label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--color-texto);
+}
+
+.buscador-campos {
+    display: flex;
+    gap: 12px;
+}
+
+.buscador-campos input {
+    flex: 1;  /* El campo ocupa todo el espacio sobrante */
+    padding: 15px 18px;
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #f9fbff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buscador-campos input:focus {
+    border-color: rgba(47, 94, 247, 0.6);
+    box-shadow: 0 0 0 4px rgba(47, 94, 247, 0.1);
+    outline: none;
+}
+
+.buscador-campos button {
+    padding: 15px 24px;
+    background: linear-gradient(135deg, var(--color-acento) 0%, #f9c74f 100%);
+    color: var(--color-texto);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(255, 191, 47, 0.32);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buscador-campos button:hover {
+    background: linear-gradient(135deg, #ffca52 0%, #f4ba2e 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px rgba(255, 191, 47, 0.36);
+}
+
+
+/* ==========================================
+   5. TUTORES DESTACADOS
+   ========================================== */
+
+.tutores-lista {
+    display: grid;
+    /* Crea tantas columnas de mínimo 240px como quepan en pantalla */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.tarjeta-tutor {
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 24px;
+    box-shadow: 0 10px 24px rgba(31, 52, 86, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-tutor:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(31, 52, 86, 0.1);
+}
+
+/* Círculo con la inicial del tutor */
+.tarjeta-inicial {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-principal) 0%, #7c9dff 100%);
+    color: var(--color-blanco);
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.tarjeta-tutor h3 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.tarjeta-materia {
+    color: var(--color-principal);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.tarjeta-descripcion {
+    color: var(--color-texto-suave);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.tarjeta-modalidad {
+    display: inline-block;
+    background: linear-gradient(135deg, #fff8db 0%, #ffe7a6 100%);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #725b10;
+}
+
+.tarjeta-precio {
+    margin-top: 16px;
+    color: var(--color-texto);
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.tarjeta-precio span {
+    color: var(--color-texto-suave);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.tutores-mensaje {
+    grid-column: 1 / -1;
+    padding: 24px;
+    border: 1px dashed var(--color-borde);
+    border-radius: var(--radio);
+    background: var(--color-blanco);
+    color: var(--color-texto-suave);
+    text-align: center;
+}
+
+
+/* ==========================================
+   6. CÓMO FUNCIONA
+   ========================================== */
+
+.como-funciona {
+    background-color: var(--color-blanco);
+}
+
+.como-funciona h2 {
+    margin-bottom: 32px;
+}
+
+.pasos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+}
+
+.paso {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 24px 20px;
+    box-shadow: 0 8px 20px rgba(35, 58, 95, 0.04);
+}
+
+.paso-numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--color-acento) 0%, #ffd76d 100%);
+    font-weight: 800;
+    margin-bottom: 14px;
+    color: #4e3c00;
+}
+
+.paso h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.paso p {
+    color: var(--color-texto-suave);
+}
+
+
+/* ==========================================
+   7. PIE DE PÁGINA
+   ========================================== */
+
+.pie {
+    background: linear-gradient(135deg, #1c2e6b 0%, var(--color-principal) 100%);
+    color: rgba(255, 255, 255, 0.82);
+    padding: 32px 0;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.pie strong {
+    color: var(--color-blanco);
+}
+
+
+/* ==========================================
+   8. FORMULARIO DE REGISTRO
+   ========================================== */
+
+.registro {
+    width: 90%;
+    max-width: 560px;
+    margin: 64px auto;
+}
+
+.registro h1 {
+    margin-bottom: 24px;
+}
+
+.registro form {
+    display: grid;
+    gap: 16px;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(43, 45, 110, 0.12);
+}
+
+.registro input,
+.registro select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.registro button {
+    padding: 14px 24px;
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.registro button:hover {
+    background-color: #d9a404;
+}
+
+
+/* ==========================================
+   9. ADAPTACIÓN A CELULARES
+   ========================================== */
+
+/* Estas reglas solo se aplican en pantallas de 700px o menos */
+@media (max-width: 700px) {
+
+    .encabezado-contenido {
+        flex-direction: column;  /* Logotipo arriba, menú abajo */
+        gap: 12px;
+    }
+
+    .menu {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .acceso {
+        justify-content: center;
+    }
+
+    .principal {
+        padding: 64px 0 96px 0;
+    }
+
+    .principal-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .principal-texto-contenedor,
+    .principal-imagen-contenedor {
+        width: 100%;
+        flex: auto;
+    }
+
+    .principal-texto {
+        margin: 0 auto;
+    }
+
+    .principal h1 {
+        font-size: 2rem;
+    }
+
+    .buscador-campos {
+        flex-direction: column;  /* Campo y botón uno debajo del otro */
+    }
+
+}
